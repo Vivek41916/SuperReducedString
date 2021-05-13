@@ -1,0 +1,20 @@
+import os
+from itertools import * 
+def superReducedString(s):
+    t=''
+    for k,v in groupby(s):
+        if(len(list(v))%2):
+            t+=k
+    if(t==s):
+        if(len(t)==0):
+            return "Empty String"
+        else:
+            return t
+    else:
+        return superReducedString(t)       
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    s = input()
+    result = superReducedString(s)
+    fptr.write(result + '\n')
+    fptr.close()
